@@ -81,22 +81,6 @@ CREATE TABLE "ngine"."table_viz"(
   "isEditable" boolean
 );
 
-DROP TABLE IF EXISTS "ngine"."custom_form_input";
-CREATE TABLE "ngine"."custom_form_input"(
-  "id" uuid DEFAULT gen_random_uuid() PRIMARY KEY,
-  "tableId" uuid,
-  "columnName" varchar(255),
-  "columnType" varchar(255),
-  "validators" text[],
-  "inputType" varchar(255),
-  "inputLabel" varchar(255),
-  "isList" boolean,
-  "bindValue" varchar(255),
-  "bindLabel" varchar(255),
-  "dropdownItems" varchar,
-  "dropdownRouteName" varchar(255)
-);
-
 DROP TABLE IF EXISTS "ngine"."user";
 CREATE TABLE "ngine"."user" (
   "id" uuid DEFAULT gen_random_uuid() PRIMARY KEY,
@@ -189,8 +173,8 @@ DROP TABLE IF EXISTS "ngine"."container_layout";
 CREATE TABLE "ngine"."container_layout" (
 	"id" uuid NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
 	"refId" uuid,
-	"width" numeric(5,2),
-	"height" numeric(5,2),
+	"width" numeric(6,2),
+	"height" numeric(6,2),
 	"marginTop" int,
 	"marginRight" int,
 	"marginBottom" int,
@@ -199,8 +183,8 @@ CREATE TABLE "ngine"."container_layout" (
 	"paddingRight" int,
 	"paddingBottom" int,
 	"paddingLeft" int,
-    "xPos" numeric(5,2),
-    "yPos" numeric(5,2),
+    "xPos" numeric(6,2),
+    "yPos" numeric(6,2),
 	"zIndex" integer,
 	"heightFitContent" boolean
 );
