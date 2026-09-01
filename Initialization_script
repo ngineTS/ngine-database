@@ -265,7 +265,7 @@ VALUES ('dialog-button', 'Dialog Button', 'Open a dialog on click.', 'dialog-but
 
 -- Insert permissions --
 INSERT INTO "ngine"."permission" ("name", "priority")
-VALUES ('Can view', 4), ('Can add', 3), ('Can add and edit', 2), ('Can add, edit and delete', 1);
+VALUES ('Can view', 3), ('Can view and edit', 2), ('Can view, edit and delete', 1);
 
 -- Insert super admin role --
 INSERT INTO "ngine"."role" ("name", "displayLabel", "description", "isDisabled")
