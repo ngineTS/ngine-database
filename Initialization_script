@@ -1,5 +1,4 @@
 CREATE SCHEMA "ngine";
-CREATE SCHEMA "custom_table";
 
 DROP TABLE IF EXISTS "ngine"."navigation";
 CREATE TABLE "ngine"."navigation" (
@@ -234,8 +233,8 @@ CREATE TABLE "ngine"."app_setting" (
   "settingValue" varchar(250)
 );
 
-DROP TABLE IF EXISTS "custom_table"."reusable_card";
-CREATE TABLE "custom_table"."reusable_card" (
+DROP TABLE IF EXISTS "ngine"."reusable_card";
+CREATE TABLE "ngine"."reusable_card" (
 	"id" uuid DEFAULT gen_random_uuid() PRIMARY KEY,
 	"navigationId" uuid,
 	"name" varchar,
@@ -243,7 +242,7 @@ CREATE TABLE "custom_table"."reusable_card" (
 	"description" varchar,
 	"order" int
 );
-CREATE INDEX idx_reusable_card_order ON custom_table.reusable_card ("order" ASC);
+CREATE INDEX idx_reusable_card_order ON ngine.reusable_card ("order" ASC);
 
 -- Insert navigation types --
 INSERT INTO "ngine"."navigation_type" ("name", "displayLabel", "description", "thumbnailImage")
