@@ -151,6 +151,8 @@ CREATE TABLE "ngine"."user_role" (
 	"id" uuid NOT NULL DEFAULT gen_random_uuid() PRIMARY KEY,
 	"userId" uuid,
 	"roleId" uuid,
+	"stripeSubscriptionId" varchar,
+    "isCancelled" boolean,
 	"createdBy" uuid,
 	"createdDate" timestamp,
 	"updatedBy" uuid,
@@ -243,6 +245,23 @@ CREATE TABLE "ngine"."reusable_card" (
 	"order" int
 );
 CREATE INDEX idx_reusable_card_order ON ngine.reusable_card ("order" ASC);
+
+DROP TABLE IF EXISTS "ngine"."auth_pack";
+CREATE TABLE "ngine"."auth_pack" (
+	"id" uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+	"navigationId" uuid not null,
+	"name" varchar not null CHECK ("name" <> ''),
+	"description" varchar not null CHECK ("name" <> ''),
+	"roleId" uuid not null,
+	"stripePriceId" varchar,
+	"price" float4,
+	"currency" varchar,
+	"isFree" boolean,
+	"isRecurringPayment" boolean,
+	"interval" varchar,
+	"order" int
+);
+CREATE INDEX idx_auth_pack_order ON ngine.auth_pack ("order" ASC);
 
 -- Insert navigation types --
 INSERT INTO "ngine"."navigation_type" ("name", "displayLabel", "description", "thumbnailImage")
