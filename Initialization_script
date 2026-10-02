@@ -263,6 +263,20 @@ CREATE TABLE "ngine"."auth_pack" (
 );
 CREATE INDEX idx_auth_pack_order ON ngine.auth_pack ("order" ASC);
 
+DROP TABLE IF EXISTS "ngine"."banner";
+CREATE TABLE "ngine"."banner" (
+	"id" uuid DEFAULT gen_random_uuid() PRIMARY KEY,
+	"navigationId" uuid NOT NULL,
+	"description" varchar NOT NULL,
+	"backgroundColor" varchar(16) NOT NULL,
+	"textColor" varchar(16) NOT NULL,
+	"startDate" timestamp NOT NULL,
+	"endDate" timestamp NOT NULL,
+	"url" varchar
+);
+CREATE INDEX idx_banner_start_date ON ngine.banner ("startDate" DESC);
+
+
 -- Insert navigation types --
 INSERT INTO "ngine"."navigation_type" ("name", "displayLabel", "description", "thumbnailImage")
 VALUES ('dialog-button', 'Dialog Button', 'Open a dialog on click.', 'dialog-button.png'),
@@ -279,7 +293,10 @@ VALUES ('dialog-button', 'Dialog Button', 'Open a dialog on click.', 'dialog-but
 	('sign-container', 'User Authentication', 'Sign-in / Sign-up form', 'sign-container.png'),
     ('simple-shape', 'Simple shape', 'A simple shape that can contains text and picture.', 'simple-shape.png'),
 	('media', 'Media', 'video, image, audio, documents...', 'media-default.png'),
-	('reusable-card-list', 'Reusable card list', 'A simple item management feature that allows users to add, edit, delete, and reorder items.', 'card-list.png');
+	('reusable-card-list', 'Reusable card list', 'A simple item management feature that allows users to add, edit, delete, and reorder items.', 'card-list.png'),
+    ('authentication-management', 'Custom Authentication Popup', 'Custom your autentication popup by conneting your app to Stripe and propose paid packs to your users.', 'custom-auth-popup.png'),
+    ('banner-management', 'Banner Management', 'Show important information to your users in the different sections of the application.', 'banner.png')
+;
 
 -- Insert permissions --
 INSERT INTO "ngine"."permission" ("name", "priority")
